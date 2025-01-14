@@ -14,8 +14,10 @@ export function Button({ onPress, label, type = "primary" }: Props) {
         className={classNames(
           "py-3 sm:py-4",
           "px-6 sm:px-8",
+          "mx-2 sm:mx-0",
+          "sm:justify-end sm:gap-x-4 sm:shadow-sm",
           type === "primary" && "bg-black",
-          type === "secondary" && "bg-tint",
+          type === "secondary" && "bg-tint"
         )}
       >
         <Text className="text-white font-semibold tracking-widest">
