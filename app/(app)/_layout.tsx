@@ -1,6 +1,8 @@
-import { Stack } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 import React from "react";
 import colors from "@/constants/colors";
+import { Platform } from "react-native";
+import { useAuth } from "@/data/hooks/useAuth";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -15,6 +17,12 @@ export const unstable_settings = {
 // SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
+  const { authToken } = useAuth();
+
+  if (!authToken) {
+    return <Redirect href="/login" />;
+  }
+
   return (
     <Stack>
       <Stack.Screen
@@ -27,6 +35,15 @@ export default function Layout() {
       <Stack.Screen
         name="works/[workId]"
         options={{
+          ...Platform.select({
+            web: {
+              presentation: "transparentModal",
+              animation: "fade",
+            },
+            default: {
+              presentation: "modal",
+            },
+          }),
           headerShown: false,
         }}
       />

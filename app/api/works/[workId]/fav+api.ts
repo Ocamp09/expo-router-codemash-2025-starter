@@ -1,15 +1,22 @@
 import { Database } from "@/data/api/database";
 
-export async function GET(
-  request: Request,
-  { workId }: Record<string, string>
-) {
-  // read the favorites status from our database
+export async function GET(request: Request) {
   const database = new Database(request.headers.get("authToken"));
-  const favStatus = await database.getFavoriteStatus(workId);
-  // make a json response
-  return Response.json(favStatus);
+  const favs = await database.getFavorites();
+  return Response.json(favs);
 }
+
+// export async function GET(
+//   request: Request,
+//   { workId }: Record<string, string>
+// ) {
+
+//   // read the favorites status from our database
+//   const database = new Database(request.headers.get("authToken"));
+//   const favStatus = await database.getFavoriteStatus(workId);
+//   // make a json response
+//   return Response.json(favStatus);
+// }
 
 export async function POST(
   request: Request,
