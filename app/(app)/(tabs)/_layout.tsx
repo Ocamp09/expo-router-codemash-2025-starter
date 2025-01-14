@@ -40,6 +40,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="visit"
+        options={{
+          title: "Visit",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon type="MaterialIcons" name="map" color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
