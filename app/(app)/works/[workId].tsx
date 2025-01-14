@@ -19,7 +19,6 @@ export default function WorkScreen() {
     workId: string;
   }>();
 
-  console.log(workId);
   // query art API for the work
   const workQuery = useWorkByIdQuery(workId);
   const work = workQuery.data;
